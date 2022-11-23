@@ -29,9 +29,9 @@ python usage:
 
 --verbose: set it to 1 to output more information
 
-For example:
+For example, in FourierSAT/, run:
 
-	FourierSAT sample.cnf --timelimit 10 --tolerance 1 --cpus 2 --verbose 1
+	python FourierSAT sample.cnf --timelimit 10 --tolerance 1 --cpus 2 --verbose 1
 
 Input: Extended DIMACS Format
 -------------------------
