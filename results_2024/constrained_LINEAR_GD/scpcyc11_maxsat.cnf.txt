@@ -1,0 +1,92 @@
+unconstrained = 0
+maxsat mode = 1
+objective type = linear
+beta = 0
+weight update factor = 0
+optimizer = GD
+maxTrial = 10
+iter 1 distFval 7245.0 contFval 7309.03046950757
+iter 2 distFval 7141.0 contFval 7254.473616715181
+iter 3 distFval 7053.0 contFval 7207.57910449463
+iter 4 distFval 6980.0 contFval 7165.328219163438
+iter 5 distFval 6912.0 contFval 7126.094978233792
+iter 6 distFval 6871.0 contFval 7088.5507573837485
+iter 7 distFval 6822.0 contFval 7052.266898600585
+iter 8 distFval 6774.0 contFval 7017.124677661329
+iter 9 distFval 6725.0 contFval 6982.364317578791
+iter 10 distFval 6674.0 contFval 6947.584289154792
+iter 11 distFval 6620.0 contFval 6912.5373386194005
+iter 12 distFval 6573.0 contFval 6877.231648419618
+iter 13 distFval 6525.0 contFval 6841.736625067389
+iter 14 distFval 6464.0 contFval 6806.080465310698
+iter 15 distFval 6416.0 contFval 6770.082199763961
+iter 16 distFval 6360.0 contFval 6733.705025794925
+iter 17 distFval 6311.0 contFval 6697.253144852574
+iter 18 distFval 6267.0 contFval 6660.5897451091005
+iter 19 distFval 6227.0 contFval 6623.575516528773
+iter 20 distFval 6178.0 contFval 6586.329454149849
+iter 21 distFval 6140.0 contFval 6548.797064535193
+iter 22 distFval 6099.0 contFval 6511.401159117605
+iter 23 distFval 6060.0 contFval 6474.115091986981
+iter 24 distFval 6038.0 contFval 6436.628248925558
+iter 25 distFval 6001.0 contFval 6398.996154405028
+iter 26 distFval 5967.0 contFval 6361.466253086789
+iter 27 distFval 5937.0 contFval 6323.917910120607
+iter 28 distFval 5899.0 contFval 6286.442697432951
+iter 29 distFval 5878.0 contFval 6249.562889780105
+iter 30 distFval 5839.0 contFval 6213.167724608355
+iter 31 distFval 5821.0 contFval 6177.214496061134
+iter 32 distFval 5791.0 contFval 6141.77312147668
+iter 33 distFval 5768.0 contFval 6106.91612914134
+iter 34 distFval 5737.0 contFval 6072.599021609805
+iter 35 distFval 5714.0 contFval 6038.855542633518
+iter 36 distFval 5699.0 contFval 6005.703071304191
+iter 37 distFval 5671.0 contFval 5973.102840646146
+iter 38 distFval 5641.0 contFval 5940.941316085915
+iter 39 distFval 5618.0 contFval 5909.720686416907
+iter 40 distFval 5594.0 contFval 5879.448685307138
+iter 41 distFval 5577.0 contFval 5850.1786096905735
+iter 42 distFval 5550.0 contFval 5821.726967359374
+iter 43 distFval 5522.0 contFval 5794.058719074177
+iter 44 distFval 5504.0 contFval 5767.421298357089
+iter 45 distFval 5483.0 contFval 5741.613591058826
+iter 46 distFval 5472.0 contFval 5716.1844457613515
+iter 47 distFval 5459.0 contFval 5691.40194864979
+iter 48 distFval 5443.0 contFval 5667.508398718282
+iter 49 distFval 5426.0 contFval 5644.4468350258985
+iter 50 distFval 5406.0 contFval 5622.246858443033
+iter 51 distFval 5397.0 contFval 5600.77580906867
+iter 52 distFval 5378.0 contFval 5580.166106566276
+iter 53 distFval 5368.0 contFval 5560.468099985064
+iter 54 distFval 5360.0 contFval 5541.358599468449
+iter 55 distFval 5343.0 contFval 5522.683219742428
+iter 56 distFval 5337.0 contFval 5504.535151223706
+iter 57 distFval 5328.0 contFval 5486.7943541234135
+iter 58 distFval 5310.0 contFval 5469.621106268883
+iter 59 distFval 5304.0 contFval 5452.81927582113
+iter 60 distFval 5293.0 contFval 5436.531885142257
+iter 61 distFval 5281.0 contFval 5420.863833186848
+iter 62 distFval 5273.0 contFval 5405.938654531395
+iter 63 distFval 5256.0 contFval 5391.661396963426
+iter 64 distFval 5247.0 contFval 5377.882671419738
+iter 65 distFval 5243.0 contFval 5364.855789504955
+iter 66 distFval 5237.0 contFval 5352.443371630078
+iter 67 distFval 5229.0 contFval 5340.570704699181
+iter 68 distFval 5219.0 contFval 5329.296612718817
+iter 69 distFval 5215.0 contFval 5318.409680910622
+iter 70 distFval 5208.0 contFval 5308.033933198165
+iter 71 distFval 5204.0 contFval 5298.111887834986
+iter 72 distFval 5200.0 contFval 5288.709223521167
+iter 73 distFval 5198.0 contFval 5279.547006458208
+iter 74 distFval 5193.0 contFval 5270.6255996957
+iter 75 distFval 5192.0 contFval 5262.0510319705845
+iter 76 distFval 5188.0 contFval 5253.919341817848
+iter 77 distFval 5180.0 contFval 5246.301149386838
+iter 78 distFval 5175.0 contFval 5238.964889895616
+iter 79 distFval 5173.0 contFval 5231.8408637123375
+iter 80 distFval 5168.0 contFval 5225.014384318886
+iter 81 distFval 5164.0 contFval 5218.458061367642
+iter 82 distFval 5158.0 contFval 5212.226189179121
+iter 83 distFval 5153.0 contFval 5206.273459479238
+o 5151
+distFval = 5151 contFval = 5200.650347153291 iterNum = 84 time = 3658.0598361492157 TrialNum = 1 avgIterTime 43.548331575734274

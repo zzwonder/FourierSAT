@@ -1,0 +1,18 @@
+global optimization flag = 0
+unconstrained optimization switch = 0
+global_mode = square
+beta = 0
+weight update factor = 0
+optimizer = SLSQP
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 34.000000148151976
+            Iterations: 16
+            Function evaluations: 15
+            Gradient evaluations: 15
+distFval = 34 contFval = 34.000000148151976 iterNum = 16 time = 76.58917307853699 TrialNum = 1 avgIterTime 4.786823615431786
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 32.99992476179319
+            Iterations: 19
+            Function evaluations: 18
+            Gradient evaluations: 18
+distFval = 33 contFval = 32.99992476179319 iterNum = 19 time = 91.85980415344238 TrialNum = 2 avgIterTime 4.834726710068552

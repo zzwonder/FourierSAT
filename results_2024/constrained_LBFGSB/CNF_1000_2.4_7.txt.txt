@@ -1,0 +1,132 @@
+global optimization flag = 0
+unconstrained optimization switch = 0
+global_mode = square
+beta = 0
+weight update factor = 0
+optimizer = L-BFGS-B
+distFval = 5 contFval = 5.000000000000001 iterNum = 21 time = 37.26138615608215 TrialNum = 1 avgIterTime 1.7743522212618874
+distFval = 5 contFval = 5.005014816867141 iterNum = 20 time = 30.797253370285034 TrialNum = 2 avgIterTime 1.5398632287979126
+distFval = 4 contFval = 4.014912086762613 iterNum = 17 time = 26.04372549057007 TrialNum = 3 avgIterTime 1.5319845536175896
+distFval = 6 contFval = 5.999999992484628 iterNum = 23 time = 38.95301294326782 TrialNum = 4 avgIterTime 1.6936097559721575
+distFval = 7 contFval = 7.007161515440981 iterNum = 18 time = 28.21649670600891 TrialNum = 5 avgIterTime 1.5675838126076593
+distFval = 5 contFval = 5.004879205653558 iterNum = 17 time = 24.367253065109253 TrialNum = 6 avgIterTime 1.4333685145658606
+distFval = 5 contFval = 5.003971863796128 iterNum = 18 time = 26.493226528167725 TrialNum = 7 avgIterTime 1.471846514277988
+distFval = 5 contFval = 5.628730219376947 iterNum = 24 time = 63.09089779853821 TrialNum = 8 avgIterTime 2.6287878851095834
+RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =         1000     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  2.89961D+02    |proj g|=  1.97840D+00
+
+At iterate    1    f=  1.25371D+02    |proj g|=  1.57247D+00
+
+At iterate    2    f=  8.53152D+01    |proj g|=  1.33188D+00
+  ys=-5.889E+00  -gs= 7.716E+01 BFGS update SKIPPED
+
+At iterate    3    f=  6.00096D+01    |proj g|=  1.20972D+00
+  ys=-5.275E+00  -gs= 4.798E+01 BFGS update SKIPPED
+
+At iterate    4    f=  4.35188D+01    |proj g|=  1.00890D+00
+  ys=-2.997E+00  -gs= 3.149E+01 BFGS update SKIPPED
+
+At iterate    5    f=  3.26967D+01    |proj g|=  8.39906D-01
+  ys=-1.600E+00  -gs= 2.085E+01 BFGS update SKIPPED
+
+At iterate    6    f=  2.54235D+01    |proj g|=  9.32948D-01
+  ys=-1.399E+00  -gs= 1.385E+01 BFGS update SKIPPED
+
+At iterate    7    f=  2.10811D+01    |proj g|=  8.22886D-01
+  ys=-1.071E+00  -gs= 8.144E+00 BFGS update SKIPPED
+
+At iterate    8    f=  1.71910D+01    |proj g|=  6.63604D-01
+  ys=-9.387E-01  -gs= 7.309E+00 BFGS update SKIPPED
+
+At iterate    9    f=  1.44567D+01    |proj g|=  6.91871D-01
+  ys=-6.367E-01  -gs= 5.148E+00 BFGS update SKIPPED
+
+At iterate   10    f=  1.22887D+01    |proj g|=  8.28041D-01
+  ys=-5.995E-01  -gs= 4.035E+00 BFGS update SKIPPED
+
+At iterate   11    f=  1.09126D+01    |proj g|=  6.65332D-01
+  ys=-3.055E-01  -gs= 2.599E+00 BFGS update SKIPPED
+
+At iterate   12    f=  9.98181D+00    |proj g|=  5.77716D-01
+  ys=-1.683E-01  -gs= 1.777E+00 BFGS update SKIPPED
+
+At iterate   13    f=  9.65977D+00    |proj g|=  6.71588D-01
+  ys=-3.434E-02  -gs= 6.269E-01 BFGS update SKIPPED
+
+At iterate   14    f=  9.43652D+00    |proj g|=  5.99684D-01
+  ys=-7.171E-02  -gs= 4.106E-01 BFGS update SKIPPED
+
+At iterate   15    f=  9.14149D+00    |proj g|=  2.47396D-01
+  ys=-1.137E-01  -gs= 5.332E-01 BFGS update SKIPPED
+
+At iterate   16    f=  8.95087D+00    |proj g|=  2.42312D-01
+  ys=-3.636E-02  -gs= 3.631E-01 BFGS update SKIPPED
+
+At iterate   17    f=  8.91361D+00    |proj g|=  3.15346D-01
+  ys=-2.036E-02  -gs= 6.433E-02 BFGS update SKIPPED
+
+At iterate   18    f=  8.85086D+00    |proj g|=  4.12241D-01
+  ys=-3.402E-02  -gs= 1.085E-01 BFGS update SKIPPED
+
+At iterate   19    f=  8.66679D+00    |proj g|=  6.13941D-01
+  ys=-1.460E-01  -gs= 2.951E-01 BFGS update SKIPPED
+
+At iterate   20    f=  8.44466D+00    |proj g|=  7.71105D-01
+  ys=-1.123E-01  -gs= 3.881E-01 BFGS update SKIPPED
+
+At iterate   21    f=  8.15119D+00    |proj g|=  5.20192D-01
+  ys=-1.166E-01  -gs= 5.287E-01 BFGS update SKIPPED
+
+At iterate   22    f=  7.78230D+00    |proj g|=  5.72571D-01
+  ys=-1.181E-01  -gs= 6.787E-01 BFGS update SKIPPED
+
+At iterate   23    f=  7.58266D+00    |proj g|=  6.80061D-01
+  ys=-5.462E-02  -gs= 3.720E-01 BFGS update SKIPPED
+
+At iterate   24    f=  7.37650D+00    |proj g|=  4.70901D-01
+  ys=-8.174E-02  -gs= 3.714E-01 BFGS update SKIPPED
+
+At iterate   25    f=  7.05947D+00    |proj g|=  3.21759D-01
+  ys=-1.446E-01  -gs= 5.618E-01 BFGS update SKIPPED
+
+At iterate   26    f=  6.96076D+00    |proj g|=  3.83219D-01
+  ys=-2.099E-02  -gs= 1.869E-01 BFGS update SKIPPED
+
+At iterate   27    f=  6.37666D+00    |proj g|=  7.53314D-01
+  ys=-8.621E-01  -gs= 7.371E-01 BFGS update SKIPPED
+
+At iterate   28    f=  6.15477D+00    |proj g|=  3.09544D-01
+  ys=-1.542E-07  -gs= 4.438E-01 BFGS update SKIPPED
+
+At iterate   29    f=  6.00000D+00    |proj g|=  1.07527D-03
+  ys=-1.947E-07  -gs= 3.095E-01 BFGS update SKIPPED
+
+At iterate   30    f=  5.13026D+00    |proj g|=  2.60522D-01
+  ys=-3.471E+00  -gs= 3.772E-03 BFGS update SKIPPED
+
+At iterate   31    f=  5.00000D+00    |proj g|=  2.22045D-16
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+ 1000     31     41    779    29   772   2.220D-16   5.000D+00
+distFval = 5 contFval = 5.000000000000001 iterNum = 31 time = 55.7783784866333 TrialNum = 9 avgIterTime 1.799302908682054
+distFval = 5 contFval = 4.999999999999998 iterNum = 20 time = 30.65968942642212 TrialNum = 10 avgIterTime 1.5329850554466247

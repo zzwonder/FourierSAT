@@ -1,0 +1,200 @@
+unconstrained = 0
+maxsat mode = 1
+objective type = square
+beta = 0
+weight update factor = 0
+optimizer = GD
+maxTrial = 10
+iter 1 distFval 153.0 contFval 32.01332399496121
+iter 2 distFval 138.0 contFval 27.2243509574307
+iter 3 distFval 135.0 contFval 24.7685334843753
+iter 4 distFval 128.0 contFval 23.273264468405042
+iter 5 distFval 123.0 contFval 22.270619568809426
+iter 6 distFval 122.0 contFval 21.554620892428847
+iter 7 distFval 118.0 contFval 21.020262354620293
+iter 8 distFval 117.0 contFval 20.608427398001517
+iter 9 distFval 103.0 contFval 20.283286134956736
+iter 10 distFval 103.0 contFval 20.0218217349704
+iter 11 distFval 101.0 contFval 19.808529822732964
+iter 12 distFval 104.0 contFval 19.632547220577123
+iter 13 distFval 104.0 contFval 19.486008563884177
+iter 14 distFval 103.0 contFval 19.363060913470342
+iter 15 distFval 100.0 contFval 19.259248461484866
+iter 16 distFval 99.0 contFval 19.171114211372323
+iter 17 distFval 98.0 contFval 19.095933607448288
+iter 18 distFval 96.0 contFval 19.031531107743817
+iter 19 distFval 96.0 contFval 18.97615050139489
+iter 20 distFval 100.0 contFval 18.928361039941635
+o 100
+distFval = 100 contFval = 18.88698805886806 iterNum = 21 time = 31.886663675308228 TrialNum = 1 avgIterTime 1.518413157690139
+iter 1 distFval 163.0 contFval 32.90271265551971
+iter 2 distFval 153.0 contFval 27.558469672363625
+iter 3 distFval 143.0 contFval 24.87687114065297
+iter 4 distFval 136.0 contFval 23.26730230871322
+iter 5 distFval 131.0 contFval 22.20214527161029
+iter 6 distFval 119.0 contFval 21.45229886210039
+iter 7 distFval 112.0 contFval 20.901573986515004
+iter 8 distFval 112.0 contFval 20.48451463987687
+iter 9 distFval 112.0 contFval 20.161289634412185
+iter 10 distFval 112.0 contFval 19.90619161224843
+iter 11 distFval 108.0 contFval 19.701853502874716
+iter 12 distFval 108.0 contFval 19.536116631091108
+iter 13 distFval 101.0 contFval 19.400226959780387
+iter 14 distFval 99.0 contFval 19.287740158211435
+iter 15 distFval 101.0 contFval 19.193826324284426
+iter 16 distFval 101.0 contFval 19.114811327258113
+iter 17 distFval 101.0 contFval 19.047864510632106
+iter 18 distFval 99.0 contFval 18.990780492888376
+iter 19 distFval 101.0 contFval 18.941823513352805
+distFval = 101 contFval = 18.899614524615124 iterNum = 20 time = 30.454586029052734 TrialNum = 2 avgIterTime 1.522730004787445
+iter 1 distFval 148.0 contFval 30.62597685579766
+iter 2 distFval 142.0 contFval 26.052135677604547
+iter 3 distFval 141.0 contFval 23.70569735933149
+iter 4 distFval 131.0 contFval 22.302710961758216
+iter 5 distFval 126.0 contFval 21.38870383748479
+iter 6 distFval 117.0 contFval 20.758542312437086
+iter 7 distFval 105.0 contFval 20.305924647128613
+iter 8 distFval 102.0 contFval 19.970531984868348
+iter 9 distFval 96.0 contFval 19.715826151827613
+iter 10 distFval 95.0 contFval 19.518531243464132
+iter 11 distFval 93.0 contFval 19.363203860014
+iter 12 distFval 93.0 contFval 19.23924410554243
+iter 13 distFval 95.0 contFval 19.13916507595717
+iter 14 distFval 92.0 contFval 19.057548487854703
+iter 15 distFval 92.0 contFval 18.99039148118144
+iter 16 distFval 92.0 contFval 18.93468490285233
+iter 17 distFval 91.0 contFval 18.888133098570798
+o 91
+distFval = 91 contFval = 18.848962795339343 iterNum = 18 time = 27.07322096824646 TrialNum = 3 avgIterTime 1.5040686262978449
+iter 1 distFval 152.0 contFval 31.037562686978156
+iter 2 distFval 148.0 contFval 26.69082448895396
+iter 3 distFval 143.0 contFval 24.331931124992686
+iter 4 distFval 143.0 contFval 22.86025744418799
+iter 5 distFval 125.0 contFval 21.868899988027394
+iter 6 distFval 117.0 contFval 21.167509695616832
+iter 7 distFval 111.0 contFval 20.65380650881694
+iter 8 distFval 110.0 contFval 20.267584757687175
+iter 9 distFval 102.0 contFval 19.971063328258474
+iter 10 distFval 102.0 contFval 19.73939447190184
+iter 11 distFval 103.0 contFval 19.555644989226113
+iter 12 distFval 104.0 contFval 19.40795108126733
+iter 13 distFval 103.0 contFval 19.287814161272216
+iter 14 distFval 104.0 contFval 19.189033846048893
+iter 15 distFval 109.0 contFval 19.107015469892414
+iter 16 distFval 106.0 contFval 19.0383073674992
+iter 17 distFval 106.0 contFval 18.98028427207493
+iter 18 distFval 103.0 contFval 18.930926454440133
+distFval = 101 contFval = 18.8886631687955 iterNum = 19 time = 28.724767446517944 TrialNum = 4 avgIterTime 1.51183063105533
+iter 1 distFval 115.0 contFval 29.32777066430026
+iter 2 distFval 106.0 contFval 25.01984713555154
+iter 3 distFval 106.0 contFval 22.952694721616428
+iter 4 distFval 105.0 contFval 21.761682734839084
+iter 5 distFval 105.0 contFval 21.001472074175428
+iter 6 distFval 106.0 contFval 20.482513791346648
+iter 7 distFval 101.0 contFval 20.11084034862632
+iter 8 distFval 101.0 contFval 19.834854139431176
+iter 9 distFval 101.0 contFval 19.624037880901867
+iter 10 distFval 100.0 contFval 19.45928796550244
+iter 11 distFval 97.0 contFval 19.328096148704656
+iter 12 distFval 97.0 contFval 19.221967839393105
+iter 13 distFval 93.0 contFval 19.13495634456608
+iter 14 distFval 93.0 contFval 19.062790250806206
+iter 15 distFval 97.0 contFval 19.00233293937203
+iter 16 distFval 94.0 contFval 18.95123640359798
+iter 17 distFval 95.0 contFval 18.907713043859978
+o 90
+distFval = 90 contFval = 18.87038142299566 iterNum = 18 time = 26.616997241973877 TrialNum = 5 avgIterTime 1.4787228637271457
+iter 1 distFval 134.0 contFval 32.16120348168852
+iter 2 distFval 126.0 contFval 27.058103519995612
+iter 3 distFval 122.0 contFval 24.532338880910686
+iter 4 distFval 122.0 contFval 23.031896865768893
+iter 5 distFval 122.0 contFval 22.04760721474411
+iter 6 distFval 116.0 contFval 21.359422382943965
+iter 7 distFval 110.0 contFval 20.856142001425287
+iter 8 distFval 104.0 contFval 20.475455383737568
+iter 9 distFval 100.0 contFval 20.179775458770703
+iter 10 distFval 100.0 contFval 19.945140690832776
+iter 11 distFval 100.0 contFval 19.755604919399442
+iter 12 distFval 89.0 contFval 19.600183804488278
+iter 13 distFval 86.0 contFval 19.471092593483483
+iter 14 distFval 86.0 contFval 19.362679885227628
+iter 15 distFval 86.0 contFval 19.27075699010259
+iter 16 distFval 87.0 contFval 19.192162259309796
+iter 17 distFval 87.0 contFval 19.124470218050405
+iter 18 distFval 87.0 contFval 19.065792766207835
+iter 19 distFval 90.0 contFval 19.014640502098338
+iter 20 distFval 91.0 contFval 18.969824227948973
+distFval = 93 contFval = 18.93038385949774 iterNum = 21 time = 32.221285820007324 TrialNum = 6 avgIterTime 1.534347647712344
+iter 1 distFval 142.0 contFval 29.727136041152683
+iter 2 distFval 137.0 contFval 25.85555721844287
+iter 3 distFval 124.0 contFval 23.769396193827166
+iter 4 distFval 116.0 contFval 22.475384242965703
+iter 5 distFval 114.0 contFval 21.605624187699874
+iter 6 distFval 114.0 contFval 20.989425454313515
+iter 7 distFval 110.0 contFval 20.5361067332113
+iter 8 distFval 111.0 contFval 20.192911430648397
+iter 9 distFval 100.0 contFval 19.92708685964699
+iter 10 distFval 100.0 contFval 19.71728512468851
+iter 11 distFval 97.0 contFval 19.549054717150714
+iter 12 distFval 97.0 contFval 19.412310295936898
+iter 13 distFval 99.0 contFval 19.2998343721147
+iter 14 distFval 99.0 contFval 19.206350862199187
+iter 15 distFval 99.0 contFval 19.127931552920916
+iter 16 distFval 99.0 contFval 19.06160441102177
+iter 17 distFval 101.0 contFval 19.005088514037237
+iter 18 distFval 101.0 contFval 18.956610745513768
+distFval = 100 contFval = 18.914776619565263 iterNum = 19 time = 28.20341682434082 TrialNum = 7 avgIterTime 1.4843910869799162
+iter 1 distFval 141.0 contFval 30.011051660646043
+iter 2 distFval 136.0 contFval 25.951169251357577
+iter 3 distFval 136.0 contFval 23.78917565314973
+iter 4 distFval 134.0 contFval 22.462055599365723
+iter 5 distFval 113.0 contFval 21.5775469326216
+iter 6 distFval 110.0 contFval 20.954928939856345
+iter 7 distFval 110.0 contFval 20.499068738886443
+iter 8 distFval 101.0 contFval 20.155161419293204
+iter 9 distFval 102.0 contFval 19.88950034778962
+iter 10 distFval 102.0 contFval 19.680295822363824
+iter 11 distFval 100.0 contFval 19.51289524314656
+iter 12 distFval 100.0 contFval 19.377123141215392
+iter 13 distFval 102.0 contFval 19.265720554393237
+iter 14 distFval 103.0 contFval 19.173389238245942
+iter 15 distFval 103.0 contFval 19.096185052136374
+iter 16 distFval 104.0 contFval 19.03112112235056
+iter 17 distFval 99.0 contFval 18.975901338049493
+iter 18 distFval 96.0 contFval 18.928737188145732
+distFval = 96 contFval = 18.888219248820324 iterNum = 19 time = 28.632122039794922 TrialNum = 8 avgIterTime 1.506954506823891
+iter 1 distFval 164.0 contFval 32.05681687047219
+iter 2 distFval 154.0 contFval 26.8796912686691
+iter 3 distFval 142.0 contFval 24.265627258438574
+iter 4 distFval 128.0 contFval 22.703317568407904
+iter 5 distFval 127.0 contFval 21.682223611673482
+iter 6 distFval 129.0 contFval 20.976845591879954
+iter 7 distFval 126.0 contFval 20.470811089378078
+iter 8 distFval 121.0 contFval 20.097569610516356
+iter 9 distFval 115.0 contFval 19.816225242398808
+iter 10 distFval 117.0 contFval 19.60030487103603
+iter 11 distFval 108.0 contFval 19.431998239895723
+iter 12 distFval 106.0 contFval 19.29896812087998
+iter 13 distFval 106.0 contFval 19.19247236076099
+iter 14 distFval 106.0 contFval 19.106202795021886
+iter 15 distFval 103.0 contFval 19.03553872517134
+iter 16 distFval 99.0 contFval 18.977051714066832
+iter 17 distFval 104.0 contFval 18.92816879951273
+distFval = 102 contFval = 18.886938817732112 iterNum = 18 time = 26.9514639377594 TrialNum = 9 avgIterTime 1.4973043468263414
+iter 1 distFval 148.0 contFval 31.324667387579506
+iter 2 distFval 137.0 contFval 26.086086576879055
+iter 3 distFval 137.0 contFval 23.57590399652837
+iter 4 distFval 137.0 contFval 22.133102146513902
+iter 5 distFval 128.0 contFval 21.219443447634628
+iter 6 distFval 120.0 contFval 20.60378017219737
+iter 7 distFval 111.0 contFval 20.17005913877852
+iter 8 distFval 100.0 contFval 19.85387761034296
+iter 9 distFval 100.0 contFval 19.616928317187206
+iter 10 distFval 98.0 contFval 19.435233357618365
+iter 11 distFval 101.0 contFval 19.293178217293978
+iter 12 distFval 101.0 contFval 19.180261220504626
+iter 13 distFval 100.0 contFval 19.089222840494138
+iter 14 distFval 102.0 contFval 19.014922308264577
+iter 15 distFval 102.0 contFval 18.953639660393897
+iter 16 distFval 99.0 contFval 18.90262976359755
+distFval = 100 contFval = 18.8598304153484 iterNum = 17 time = 26.008581161499023 TrialNum = 10 avgIterTime 1.5299173523398006

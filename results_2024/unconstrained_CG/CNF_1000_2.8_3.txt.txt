@@ -1,0 +1,67 @@
+unconstrained = 1
+maxsat mode = 0
+objective type = square
+beta = 0
+weight update factor = 0
+optimizer = CG
+maxTrial = 10
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 0.548780
+         Iterations: 50
+         Function evaluations: 99
+         Gradient evaluations: 99
+distFval = 1 contFval = 0.5487799408705821 iterNum = 50 time = 246.30627179145813 TrialNum = 1 avgIterTime 4.926125545501709
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 0.373945
+         Iterations: 50
+         Function evaluations: 94
+         Gradient evaluations: 94
+distFval = 1 contFval = 0.37394493895241276 iterNum = 50 time = 234.93984365463257 TrialNum = 2 avgIterTime 4.698796968460083
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 0.000422
+         Iterations: 50
+         Function evaluations: 97
+         Gradient evaluations: 97
+distFval = 0 contFval = 0.000422335677792468 iterNum = 50 time = 235.85022044181824 TrialNum = 3 avgIterTime 4.71700457572937
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 0.002718
+         Iterations: 50
+         Function evaluations: 97
+         Gradient evaluations: 97
+distFval = 0 contFval = 0.0027182437894699755 iterNum = 50 time = 237.89372754096985 TrialNum = 4 avgIterTime 4.757874703407287
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 0.000599
+         Iterations: 50
+         Function evaluations: 97
+         Gradient evaluations: 97
+distFval = 0 contFval = 0.0005992756753407015 iterNum = 50 time = 244.18626475334167 TrialNum = 5 avgIterTime 4.883725476264954
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 0.000306
+         Iterations: 50
+         Function evaluations: 104
+         Gradient evaluations: 104
+distFval = 0 contFval = 0.0003055636170965831 iterNum = 50 time = 252.4993782043457 TrialNum = 6 avgIterTime 5.049987735748291
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 0.000235
+         Iterations: 50
+         Function evaluations: 97
+         Gradient evaluations: 97
+distFval = 0 contFval = 0.00023532881965061648 iterNum = 50 time = 234.6425461769104 TrialNum = 7 avgIterTime 4.692851085662841
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 0.000159
+         Iterations: 50
+         Function evaluations: 100
+         Gradient evaluations: 100
+distFval = 0 contFval = 0.0001590012312188088 iterNum = 50 time = 244.74927234649658 TrialNum = 8 avgIterTime 4.894985632896423
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 0.000461
+         Iterations: 50
+         Function evaluations: 105
+         Gradient evaluations: 105
+distFval = 0 contFval = 0.000461227554409454 iterNum = 50 time = 263.64278197288513 TrialNum = 9 avgIterTime 5.272855830192566
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 0.729080
+         Iterations: 50
+         Function evaluations: 105
+         Gradient evaluations: 105
+distFval = 2 contFval = 0.7290797158542303 iterNum = 50 time = 255.35234212875366 TrialNum = 10 avgIterTime 5.107046985626221

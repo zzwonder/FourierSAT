@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "FourierSAT.py", line 549, in <module>
+    main()
+  File "FourierSAT.py", line 547, in main
+    solve_by_OptSat(args.filepath,timelimit,tolerance,cpus,verbose,ismaxsat)
+  File "FourierSAT.py", line 442, in solve_by_OptSat
+    formula = Formula.read_DIMACS(filepath)
+  File "/home/zz59/FourierSAT/FourierSAT_Github_AIJ/boolean_formula.py", line 140, in read_DIMACS
+    for line in f:
+  File "/opt/apps/software/Compiler/GCCcore/8.3.0/Python/3.7.2/lib/python3.7/codecs.py", line 322, in decode
+    (result, consumed) = self._buffer_decode(data, self.errors, final)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte

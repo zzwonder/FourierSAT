@@ -1,0 +1,69 @@
+unconstrained = 1
+maxsat mode = 1
+objective type = abs
+beta = 0
+weight update factor = 0
+optimizer = SLSQP
+maxTrial = 10
+Iteration limit exceeded    (Exit mode 9)
+            Current function value: 26.529178158746912
+            Iterations: 51
+            Function evaluations: 214
+            Gradient evaluations: 51
+o 21
+distFval = 21 contFval = 26.529178158746912 iterNum = 51 time = 68.34908056259155 TrialNum = 1 avgIterTime 1.3401781624438716
+Iteration limit exceeded    (Exit mode 9)
+            Current function value: 32.04860005418498
+            Iterations: 51
+            Function evaluations: 223
+            Gradient evaluations: 51
+distFval = 27 contFval = 32.04860005418498 iterNum = 51 time = 69.7398636341095 TrialNum = 2 avgIterTime 1.367448418748145
+Iteration limit exceeded    (Exit mode 9)
+            Current function value: 26.25937466045465
+            Iterations: 51
+            Function evaluations: 216
+            Gradient evaluations: 51
+distFval = 23 contFval = 26.25937466045465 iterNum = 51 time = 68.38662266731262 TrialNum = 3 avgIterTime 1.3409142961689071
+Iteration limit exceeded    (Exit mode 9)
+            Current function value: 29.028961054563503
+            Iterations: 51
+            Function evaluations: 215
+            Gradient evaluations: 51
+distFval = 25 contFval = 29.028961054563503 iterNum = 51 time = 67.73422241210938 TrialNum = 4 avgIterTime 1.3281221156026803
+Iteration limit exceeded    (Exit mode 9)
+            Current function value: 30.847229078907375
+            Iterations: 51
+            Function evaluations: 213
+            Gradient evaluations: 51
+distFval = 26 contFval = 30.847229078907375 iterNum = 51 time = 68.21107792854309 TrialNum = 5 avgIterTime 1.3374722237680472
+Iteration limit exceeded    (Exit mode 9)
+            Current function value: 23.98061959268451
+            Iterations: 51
+            Function evaluations: 216
+            Gradient evaluations: 51
+o 18
+distFval = 18 contFval = 23.98061959268451 iterNum = 51 time = 68.08808469772339 TrialNum = 6 avgIterTime 1.3350606104906868
+Iteration limit exceeded    (Exit mode 9)
+            Current function value: 28.681930343996264
+            Iterations: 51
+            Function evaluations: 218
+            Gradient evaluations: 51
+distFval = 23 contFval = 28.681930343996264 iterNum = 51 time = 68.70889806747437 TrialNum = 7 avgIterTime 1.3472334263371486
+Iteration limit exceeded    (Exit mode 9)
+            Current function value: 29.851620722939348
+            Iterations: 51
+            Function evaluations: 215
+            Gradient evaluations: 51
+distFval = 25 contFval = 29.851620722939348 iterNum = 51 time = 68.03984761238098 TrialNum = 8 avgIterTime 1.3341147852878945
+Iteration limit exceeded    (Exit mode 9)
+            Current function value: 28.14912051602318
+            Iterations: 51
+            Function evaluations: 221
+            Gradient evaluations: 51
+distFval = 23 contFval = 28.14912051602318 iterNum = 51 time = 69.50548887252808 TrialNum = 9 avgIterTime 1.3628528538872213
+Iteration limit exceeded    (Exit mode 9)
+            Current function value: 26.92670728465382
+            Iterations: 51
+            Function evaluations: 211
+            Gradient evaluations: 51
+distFval = 21 contFval = 26.92670728465382 iterNum = 51 time = 67.19299125671387 TrialNum = 10 avgIterTime 1.3175097540313123

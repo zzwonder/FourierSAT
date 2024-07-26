@@ -1,0 +1,17 @@
+global_mode = abs
+beta = 0
+weight update factor = 0
+optimizer = CG
+Warning: Desired error not necessarily achieved due to precision loss.
+         Current function value: 77.504129
+         Iterations: 10
+         Function evaluations: 86
+         Gradient evaluations: 81
+o 67
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 67.362903
+         Iterations: 50
+         Function evaluations: 96
+         Gradient evaluations: 96
+o 66
+s Not Solved in 60 seconds. Minimum number of unSAT clauses = 66

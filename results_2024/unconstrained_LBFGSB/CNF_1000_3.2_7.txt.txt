@@ -1,0 +1,16 @@
+global optimization flag = 1
+unconstrained optimization switch = 1
+global_mode = square
+beta = 0
+weight update factor = 0
+optimizer = L-BFGS-B
+distFval = 2 contFval = 0.8749281682302433 iterNum = 31 time = 96.95692682266235 TrialNum = 1 avgIterTime 3.1276431545134513
+distFval = 2 contFval = 0.7724717169845049 iterNum = 50 time = 159.79589939117432 TrialNum = 2 avgIterTime 3.195918197631836
+distFval = 3 contFval = 1.250512066581542 iterNum = 38 time = 112.9231128692627 TrialNum = 3 avgIterTime 2.9716611598667346
+distFval = 3 contFval = 1.0701783858758038 iterNum = 43 time = 140.4876947402954 TrialNum = 4 avgIterTime 3.267155963321065
+distFval = 6 contFval = 2.2796992104631912 iterNum = 38 time = 112.8208794593811 TrialNum = 5 avgIterTime 2.9689708132492867
+distFval = 0 contFval = 0.0035839567950647477 iterNum = 35 time = 104.16381168365479 TrialNum = 6 avgIterTime 2.9761092730930874
+distFval = 3 contFval = 1.1998164733306842 iterNum = 50 time = 162.8530695438385 TrialNum = 7 avgIterTime 3.257061653137207
+distFval = 3 contFval = 1.1113875772501782 iterNum = 50 time = 153.72892951965332 TrialNum = 8 avgIterTime 3.0745788288116453
+distFval = 4 contFval = 1.5108066334205692 iterNum = 40 time = 114.48496675491333 TrialNum = 9 avgIterTime 2.8621244728565216
+distFval = 7 contFval = 2.5758404044591976 iterNum = 43 time = 133.4870798587799 TrialNum = 10 avgIterTime 3.1043509383534276

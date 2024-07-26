@@ -1,0 +1,68 @@
+unconstrained = 1
+maxsat mode = 1
+objective type = square
+beta = 0
+weight update factor = 0
+optimizer = SLSQP
+maxTrial = 10
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 11.657768958590486
+            Iterations: 28
+            Function evaluations: 43
+            Gradient evaluations: 28
+o 29
+distFval = 29 contFval = 11.657768958590486 iterNum = 28 time = 29.663399934768677 TrialNum = 1 avgIterTime 1.0594072937965393
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 11.657758516355306
+            Iterations: 33
+            Function evaluations: 50
+            Gradient evaluations: 33
+distFval = 29 contFval = 11.657758516355306 iterNum = 33 time = 34.76105737686157 TrialNum = 2 avgIterTime 1.053365490653298
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 11.657612629502786
+            Iterations: 29
+            Function evaluations: 46
+            Gradient evaluations: 29
+distFval = 29 contFval = 11.657612629502786 iterNum = 29 time = 31.582574605941772 TrialNum = 3 avgIterTime 1.0890544940685403
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 11.657668696669766
+            Iterations: 28
+            Function evaluations: 46
+            Gradient evaluations: 28
+distFval = 29 contFval = 11.657668696669766 iterNum = 28 time = 30.701350688934326 TrialNum = 4 avgIterTime 1.0964770317077637
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 11.657579492839181
+            Iterations: 29
+            Function evaluations: 44
+            Gradient evaluations: 29
+distFval = 29 contFval = 11.657579492839181 iterNum = 29 time = 30.615066528320312 TrialNum = 5 avgIterTime 1.0556920890150399
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 11.65768491002882
+            Iterations: 26
+            Function evaluations: 39
+            Gradient evaluations: 26
+distFval = 29 contFval = 11.65768491002882 iterNum = 26 time = 27.25196123123169 TrialNum = 6 avgIterTime 1.0481525567861705
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 11.657551634891224
+            Iterations: 31
+            Function evaluations: 49
+            Gradient evaluations: 31
+distFval = 29 contFval = 11.657551634891224 iterNum = 31 time = 33.31704330444336 TrialNum = 7 avgIterTime 1.0747435169835244
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 11.657827881383763
+            Iterations: 29
+            Function evaluations: 44
+            Gradient evaluations: 29
+distFval = 29 contFval = 11.657827881383763 iterNum = 29 time = 30.8439621925354 TrialNum = 8 avgIterTime 1.0635850922814731
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 11.657906906857939
+            Iterations: 29
+            Function evaluations: 48
+            Gradient evaluations: 29
+distFval = 29 contFval = 11.657906906857939 iterNum = 29 time = 31.944021940231323 TrialNum = 9 avgIterTime 1.101518203472269
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 11.657651239446578
+            Iterations: 27
+            Function evaluations: 39
+            Gradient evaluations: 27
+distFval = 29 contFval = 11.657651239446578 iterNum = 27 time = 27.9037926197052 TrialNum = 10 avgIterTime 1.0334740214877658

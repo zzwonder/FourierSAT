@@ -1,0 +1,16 @@
+global_mode = square
+beta = 0.5
+weight update factor = 1.0
+optimizer = CG
+Warning: Maximum number of iterations has been exceeded.
+         Current function value: 33.064508
+         Iterations: 50
+         Function evaluations: 108
+         Gradient evaluations: 108
+o 55
+Optimization terminated successfully.
+         Current function value: 33.492124
+         Iterations: 30
+         Function evaluations: 62
+         Gradient evaluations: 62
+s Not Solved in 60 seconds. Minimum number of unSAT clauses = 55

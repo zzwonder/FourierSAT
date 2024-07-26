@@ -1,0 +1,16 @@
+global_mode = square
+beta = 0.5
+weight update factor = 1.0
+optimizer = CG
+Optimization terminated successfully.
+         Current function value: 90.000006
+         Iterations: 11
+         Function evaluations: 27
+         Gradient evaluations: 27
+o 289
+Optimization terminated successfully.
+         Current function value: 108.243009
+         Iterations: 12
+         Function evaluations: 30
+         Gradient evaluations: 30
+s Not Solved in 60 seconds. Minimum number of unSAT clauses = 289

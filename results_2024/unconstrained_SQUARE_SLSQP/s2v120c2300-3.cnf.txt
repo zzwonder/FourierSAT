@@ -1,0 +1,26 @@
+unconstrained = 1
+maxsat mode = 1
+objective type = square
+beta = 0
+weight update factor = 0
+optimizer = SLSQP
+maxTrial = 10
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 134.24217738871585
+            Iterations: 19
+            Function evaluations: 39
+            Gradient evaluations: 19
+o 375
+distFval = 375 contFval = 134.24217738871585 iterNum = 19 time = 43.32896447181702 TrialNum = 1 avgIterTime 2.2804720401763916
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 134.24284894909238
+            Iterations: 16
+            Function evaluations: 34
+            Gradient evaluations: 16
+distFval = 375 contFval = 134.24284894909238 iterNum = 16 time = 37.24505019187927 TrialNum = 2 avgIterTime 2.327815979719162
+Optimization terminated successfully.    (Exit mode 0)
+            Current function value: 134.2422141402875
+            Iterations: 18
+            Function evaluations: 37
+            Gradient evaluations: 18
+distFval = 375 contFval = 134.2422141402875 iterNum = 18 time = 41.17264223098755 TrialNum = 3 avgIterTime 2.287369304233127
