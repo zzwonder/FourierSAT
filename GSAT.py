@@ -1,5 +1,7 @@
 # GSAT (greedy local search)
-from ../gradient.py import gradient
+from gradient import gradient
+from fval import fun
+from util import *
 def GSAT(x0, args):
     fval_best = 1e10
     maxIter = 10000
@@ -17,5 +19,5 @@ def GSAT(x0, args):
         if distFval < 1e-3: break
         if grad[ind] < 1e-3: break
         iterNum += 1
-        print("iter " + repr(iterNum) + " distFval " + repr(distFval)) # + " time " + repr(time.time()))
+    print("iter " + repr(iterNum) + " distFval " + repr(distFval)) # + " time " + repr(time.time()))
     return distFval, distFval, x, iterNum

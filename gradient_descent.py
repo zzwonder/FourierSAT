@@ -1,6 +1,8 @@
 # vanilla gradient descent
-from ../gradient.py import gradient
-from ../fval.py import fun
+from gradient import gradient
+from fval import fun
+from util import *
+from args import *
 def gradient_descent(x0, args):
     fval_best = 1e10
     maxIter = 1000
@@ -25,7 +27,7 @@ def gradient_descent(x0, args):
             x = [x[i] - grad[i] * step_size for i in range(len(x))]
             contFval = fun(x, args)
         distFval = fun(rounding(x), args)
-        print("iter " + repr(iterNum) + " distFval " + repr(distFval) + " contFval " + repr(contFval)) # + " time " + repr(time.time()))
         if distFval < 1/64 and ARGS.objectiveType == "square": break
         iterNum += 1
+        print("iter " + repr(iterNum) + " distFval " + repr(distFval) + " contFval " + repr(contFval)) # + " time " + repr(time.time()))
     return distFval, contFval, x, iterNum

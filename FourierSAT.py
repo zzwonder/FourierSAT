@@ -10,10 +10,12 @@ from multiprocessor import abortable_worker
 import argparse
 from util import *
 from args import *
-#from custom_optimizers import *
-from custom_optimizers import *
 from fval import fun
 from gradient import gradient
+import GSAT
+import sgd
+import coordinate_descent
+import gradient_descent
 
 #update the weights of UNSAT constraints
 def verify_sol_update_weights(formula,x,klist,weight,ctype):
@@ -60,14 +62,18 @@ def optimizer_handler(clauses,klist,param,weight,ctype,no,FC_table):
     numofvars,numofclas = param
     args = [clauses, weight, klist, ctype, FC_table]
     if ARGS.optimizer == "GD":
-        distFval, contFval, x, iterNum = gradient_descent(x0, args)
-        return {'distFval': distFval, 'contFval': contFval, 'x':x, 'iterNum': iterNum}
+        distFval, contFval, x, iterNum = gradient_descent.gradient_descent(x0, args)
     elif ARGS.optimizer == "GSAT":
-        distFval, contFval, x, iterNum = GSAT(x0, args)
-        return {'distFval': distFval, 'contFval': contFval, 'x':x, 'iterNum': iterNum}
+        distFval, contFval, x, iterNum = GSAT.GSAT(x0, args)
     # you can use your favorite optimizer here. just return the converged fun(rounding(x)) (distfval), the converged fun(x) (contFval), converged x (x) and number of iterations used (iterNum)
+    elif ARGS.optimizer == "SGD":
+        distFval, contFval, x, iterNum = sgd.SGD(x0, args)
+    elif ARGS.optimizer == "RMSPROP":
+        distFval, contFval, x, iterNum = sgd.RMSPROP(x0, args)
+    elif ARGS.optimizer == "ADAM":
+        distFval, contFval, x, iterNum = sgd.ADAM(x0, args)
     elif ARGS.optimizer == "CD":
-        distFval, contFval, x, iterNum = custom_optimizers.coordinate_descent.coordinate_descent(x0, args)
+        distFval, contFval, x, iterNum = coordinate_descent.coordinate_descent(x0, args)
     else:
         opt = {'maxiter':50,'disp':True}
         if ARGS.unconstrained == 1:  # unconstrained optimization
@@ -76,12 +82,13 @@ def optimizer_handler(clauses,klist,param,weight,ctype,no,FC_table):
             bnds = ()
             for j in range(numofvars): bnds += ((-1, 1),) 
             res = so.minimize(fun, x0, method=ARGS.optimizer, bounds=bnds,jac=gradient,args=args,options=opt, callback=callback, tol=1e-3)  #Alternative method: L-BFGS-B tol=0.1
-        return {'distFval': res.fun, 'contFval': res.fun, 'x': res.x, 'iterNum': res.nit}
+            return {'distFval': res.fun, 'contFval': res.fun, 'x': res.x, 'iterNum': res.nit}
         #res = so.basinhopping(fun, [0 for i in range(numofvars)], minimizer_kwargs = {'args':args})  #Alternative method: L-BFGS-B tol=0.1
         #res = so.direct(fun, args=args, callback=callback)  #Alternative method: L-BFGS-B tol=0.1
         #res = so.dual_annealing(fun, args=args, callback=callback)  #Alternative method: L-BFGS-B tol=0.1
         #res = so.differential_evolution(fun,bounds=bnds, callback=callback,args=args)  #Alternative method: L-BFGS-B tol=0.1
         #res = so.shgo(fun, args=args,callback=callback)  #Alternative method: L-BFGS-B tol=0.1
+    return {'distFval': distFval, 'contFval': contFval, 'x':x, 'iterNum': iterNum}
 
 
 def solve(filepath,timelimit,tolerance,cpus,verbose):
@@ -136,9 +143,9 @@ def solve(filepath,timelimit,tolerance,cpus,verbose):
             
             if verbose == 1:
                 print('#UNSAT clauses: '+repr(best_unsat_num))
-            if best_unsat_num <= tolerance:
+            if ARGS.mode == 'solver' and best_unsat_num <= tolerance:
                 solved_flag = 1
-                print('s Solved at iterNum = ' + repr(res['iterNum']) + ' time = ' + repr(time.time() - trial_start) + ' TrialNum = ' + repr(ARGS.trial_no) + ' avgIterTime ' + repr((time.time() - trial_start)/res['iterNum']))
+                print('s Solved at iterNum = ' + repr(res['iterNum']) + ' time = ' + repr(time.time() - trial_start) + ' TrialNum = ' + repr(ARGS.trial_no) + ' avgTimePerIteration ' + repr((time.time() - trial_start)/res['iterNum']))
             
             elapsed = time.time() - start
             if ARGS.trial_no >= ARGS.maxTrial: break
