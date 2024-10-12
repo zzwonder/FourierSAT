@@ -101,7 +101,7 @@ def analyze_thesis(benchmark = "CNF_1000", figDir = "figs/", name=""):
     results = {}
     successTrials = {}
     solvers = []    
-    solversMap = {"unconstrained_SQUARE_GD":"GD-SQUARE", "unconstrained_SQUARE_ADAM":"ADAM-SQUARE", "unconstrained_SQUARE_SLSQP":"SLSQP-SQUARE", "constrained_SQUARE_SLSQP":"SLSQP-SQUARE-C", "constrained_SQUARE_GD":"GD-SQUARE-C", "unconstrained_ABS_GD":"GD-ABS","unconstrained_ABS_SLSQP":"SLSQP-ABS","constrained_ABS_GD":"GD-ABS-C","constrained_ABS_SLSQP":"SLSQP-ABS-C", "constrained_LINEAR_SLSQP":"SLSQP-LINEAR-C", "constrained_LINEAR_GD":"GD-LINEAR-C"}
+    solversMap = {"constrained_ABS_SLSQP":"SLSQP-ABS-C", "unconstrained_SQUARE_GD":"GD-SQ", "unconstrained_SQUARE_ADAM":"ADAM-SQ", "unconstrained_SQUARE_SLSQP":"SLSQP-SQ", "constrained_SQUARE_SLSQP":"SLSQP-SQ-C", "constrained_SQ_GD":"GD-SQUARE-C", "unconstrained_ABS_GD":"GD-ABS","unconstrained_ABS_SLSQP":"SLSQP-ABS","constrained_ABS_GD":"GD-ABS-C","constrained_ABS_SLSQP":"SLSQP-ABS-C", "constrained_LINEAR_SLSQP":"SLSQP-LIN-C", "constrained_LINEAR_GD":"GD-LIN-C", "constrained_SQUARE_GD":"GD-SQ-C"}
    
     if benchmark == "CNF_1000": Range = range(10,40,2)
     elif benchmark == "XOR_1000": Range = range(1,6,1)
@@ -110,7 +110,7 @@ def analyze_thesis(benchmark = "CNF_1000", figDir = "figs/", name=""):
     elif name == "GD": 
         solvers = [ "constrained_LINEAR_GD", "constrained_SQUARE_GD", "constrained_ABS_GD", "unconstrained_SQUARE_GD"]
     elif name == "diffAlgo": 
-        solvers = ["constrained_LINEAR_GD","unconstrained_SQUARE_GD", "unconstrained_SQUARE_ADAM", "unconstrained_SQUARE_SLSQP", "constrained_SQUARE_SLSQP", "constrained_SQUARE_GD", "unconstrained_ABS_GD","unconstrained_ABS_SLSQP","constrained_ABS_GD"]
+        solvers = ["constrained_ABS_SLSQP","constrained_LINEAR_GD","unconstrained_SQUARE_GD", "unconstrained_SQUARE_ADAM", "unconstrained_SQUARE_SLSQP", "constrained_SQUARE_SLSQP", "constrained_SQUARE_GD", "unconstrained_ABS_GD","unconstrained_ABS_SLSQP","constrained_ABS_GD"]
     elif name == "formulation_SLSQP":
         solvers = ["constrained_ABS_SLSQP", "constrained_SQUARE_SLSQP","constrained_LINEAR_SLSQP", "unconstrained_SQUARE_SLSQP", "unconstrained_ABS_SLSQP"]
     elif name == "formulation_GD":
@@ -167,30 +167,32 @@ def analyze_thesis(benchmark = "CNF_1000", figDir = "figs/", name=""):
         plt.cla()
     elif "diff" in name:
         fig, ax = plt.subplots()
+        solverRank = []
         for solver in solvers:
-            ax.plot([k/10 for k in Range], results[solver], linewidth=3)
+            solverRank.append(sum(results[solver]))
+        order = sorted(range(len(solverRank)), key=lambda k: solverRank[k])[::-1]
         ax.set_ylabel('ratio of solved instances',fontsize=16)
         ax.set_xlabel('clause-vairable ratio',fontsize=16)
-        ax.legend([solversMap[s] for s in solvers], fontsize=16)
+        for idx in order:
+            ax.plot([k/10 for k in Range], results[solvers[idx]], linewidth=3)
+        ax.legend([ solversMap[solvers[idx]] for idx in order])
         plt.savefig(figDir + benchmark + '_' + name + '.png')
         plt.cla()
 
     elif "formulation" in name:
-        #if "SLSQP" in name:
-        #    r = ["SLSQP-ABS-C", "SLSQP-SQUARE-C","SLSQP-LINEAR-C", "SLSQP-SQUARE", "SLSQP-ABS"]
-        #elif "GD" in name:
-        #    r = ["GD-ABS-C", "GD-SQUARE-C","GD-LINEAR-C", "GD-SQUARE", "GD-ABS"]
-            #solvers = ["constrained_ABS_GD", "constrained_SQUARE_GD","constrained_LINEAR_GD", "unconstrained_SQUARE_GD", "unconstrained_ABS_GD"]
         if problem == "CNF_1000" or problem == "XOR_1000":
             fig, ax = plt.subplots()
+            solverRank = []
             for solver in solvers:
                 if solver in results:
-                    ax.plot([k/10 for k in Range], results[solver], linewidth=3)   
+                    solverRank.append(sum(results[solver]))
+            order = sorted(range(len(solverRank)), key=lambda k: solverRank[k])[::-1]
+            for idx in order:
+                ax.plot([k/10 for k in Range], results[solvers[idx]], linewidth=3)   
             ax.set_ylabel('ratio of solved instances',fontsize=16)
             ax.set_xlabel('clause-vairable ratio',fontsize=16)
             ax.tick_params(axis='both', which='major', labelsize=12)
-
-            ax.legend([solversMap[s] for s in solvers], fontsize=16)
+            ax.legend([ solversMap[solvers[idx]] for idx in order])
             plt.savefig(figDir + benchmark + '_' + name + '.png')
             plt.cla()
         elif problem == "CNFXORCARD":

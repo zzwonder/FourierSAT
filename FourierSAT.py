@@ -16,8 +16,10 @@ import GSAT
 import sgd
 import coordinate_descent
 import gradient_descent
-from HJ_utils import *
-from hj_prox import *
+#from HJ_utils import *
+#from hj_prox import *
+import HJ_utils
+import hj_prox
 
 #update the weights of UNSAT constraints
 def verify_sol_update_weights(formula,x,klist,weight,ctype):
