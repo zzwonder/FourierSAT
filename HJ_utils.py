@@ -1,5 +1,6 @@
 import torch 
 import numpy as np
+from args import *
 
 def compute_prox(x, f, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0):
     '''
@@ -19,7 +20,7 @@ def compute_prox(x, f, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, line
     z = np.zeros(int_samples)
     f_array = np.zeros(int_samples)
     for i in range(int_samples):
-        f_array[i] = f(y[i, :]) # Compute f(y) for each sample
+        f_array[i] = f(y[i, :], args) # Compute f(y) for each sample
         # z[i] = -f_array[i] * (alpha / delta)  # Compute f(y) for each sample
     z = -f_array * (alpha / delta)  
     max_z = np.max(z)  # To handle numerical stability for softmax
@@ -38,7 +39,7 @@ def compute_prox(x, f, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, line
 
         # find index where z is minimum and obtain minimum between f(y_min) and f(prox_term)
         min_index = np.argmin(f_array)
-        f_prox = f(prox_term)
+        f_prox = f(prox_term, args)
         if z[min_index] < f_prox:
             prox_term = y[min_index,:]
 
@@ -49,7 +50,8 @@ def compute_prox(x, f, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, line
         assert np.isfinite(prox_term).all()
 
         # Compute envelope
-        envelope = f(prox_term) + (1 / (2 * t)) * np.linalg.norm(prox_term - x, ord=2) ** 2
+        # envelope = f(prox_term, args) + (1 / (2 * t)) * np.linalg.norm(prox_term - x, ord=2) ** 2
+        envelope = 0.0
 
         prox_term = prox_term.reshape(dim)
         assert prox_term.shape == x.shape
