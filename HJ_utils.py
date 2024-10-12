@@ -1,8 +1,7 @@
-import torch 
 import numpy as np
 from args import *
 
-def compute_prox(x, f, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0):
+def compute_prox(x, args, f, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0):
     '''
         compute prox.
         input is a single vector x of size (n,)
@@ -33,13 +32,13 @@ def compute_prox(x, f, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, line
         print('z = ', z)
         print('w = ', w)
         alpha = 0.5 * alpha
-        return compute_prox(x, t, f, delta=delta, int_samples=int_samples, alpha=alpha, linesearch_iters=linesearch_iters)
+        return compute_prox(x, args, f, t=t, delta=delta, int_samples=int_samples, alpha=alpha, linesearch_iters=linesearch_iters)
     else:
         prox_term = np.dot(w.T, y)  # Weighted average of y, shape = (dim,)
 
         # find index where z is minimum and obtain minimum between f(y_min) and f(prox_term)
         min_index = np.argmin(f_array)
-        f_prox = f(prox_term, args)
+        f_prox = f(prox_term[0], args)
         if z[min_index] < f_prox:
             prox_term = y[min_index,:]
 
@@ -55,5 +54,4 @@ def compute_prox(x, f, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, line
 
         prox_term = prox_term.reshape(dim)
         assert prox_term.shape == x.shape
-
         return prox_term, envelope, linesearch_iters

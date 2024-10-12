@@ -16,29 +16,19 @@ def hj_prox(x0, args):
 
     dist_fval_best = 1e10
     cont_fval_best = 1e10
-    
     while iterNum < maxIter:
         if not ARGS.unconstrained:
-            x, *_ = compute_prox(x, fun, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0)
+            x, *_ = compute_prox(x, args, fun, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0)
             x = truncate(x)
         else:
-            x, *_ = compute_prox(x, fun, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0)
+            x, *_ = compute_prox(x, args, fun, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0)
         contFval = fun(x, args)
         distFval = fun(rounding(x), args)
-
         if distFval < dist_fval_best:
             x_best = x
-
         dist_fval_best = min(dist_fval_best, distFval)
         cont_fval_best = min(cont_fval_best, contFval)
-
-
-        #if distFval < 1 and ARGS.objectiveType == "square": break
         if distFval < 1: break
-        # you can also break when contFval < 1/64
         iterNum += 1
         print("iter " + repr(iterNum) + " distFval " + repr(distFval) + " contFval " + repr(contFval)) # + " time " + repr(time.time()))
-
-
-
     return dist_fval_best, cont_fval_best, x_best, iterNum
