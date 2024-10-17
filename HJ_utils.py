@@ -1,6 +1,10 @@
 import numpy as np
 from args import *
 
+def compute_prox_parallel(x, polyStr, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0):
+    import torch
+    pass
+
 def compute_prox(x, args, f, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0):
     '''
         compute prox.

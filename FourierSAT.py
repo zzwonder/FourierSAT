@@ -16,8 +16,6 @@ import GSAT
 import sgd
 import coordinate_descent
 import gradient_descent
-#from HJ_utils import *
-#from hj_prox import *
 import HJ_utils
 import hj_prox
 
@@ -78,7 +76,7 @@ def optimizer_handler(clauses,klist,param,weight,ctype,no,FC_table):
         distFval, contFval, x, iterNum = sgd.ADAM(x0, args)
     elif ARGS.optimizer == "CD":
         distFval, contFval, x, iterNum = coordinate_descent.coordinate_descent(x0, args)
-    elif ARGS.optimizer == "HJPROX":
+    elif ARGS.optimizer == "HJPROX" or ARGS.optimizer == "HJPROX_PARALLEL":
         distFval, contFval, x, iterNum = hj_prox.hj_prox(x0, args)
     else:
         opt = {'maxiter':50,'disp':True}
