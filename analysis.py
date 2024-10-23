@@ -29,7 +29,8 @@ def getList(solverName, allFiles):
 def analyze_solver(benchmark, names):
     benchmarks = os.listdir(benchmark)
     results = {}
-    solvers_temp = ["SLSQP_0.0", "SLSQP_0.2","SLSQP_0.4","SLSQP_0.6", "SLSQP_0.8", "SLSQP_1.0", "SLSQP_1.2", "SLSQP_1.4", "SLSQP_1.6", "SLSQP_1.8"]
+    
+    #solvers_temp = ["SLSQP_0.0", "SLSQP_0.2","SLSQP_0.4","SLSQP_0.6", "SLSQP_0.8", "SLSQP_1.0", "SLSQP_1.2", "SLSQP_1.4", "SLSQP_1.6", "SLSQP_1.8"]
     solvers_temp = ["ADAM_0.0", "ADAM_0.2","ADAM_0.4","ADAM_0.6", "ADAM_0.8", "ADAM_1.0", "ADAM_1.2", "ADAM_1.4", "ADAM_1.6", "ADAM_1.8"]
     for name in names:
         if name == "penaltyTermABS":
@@ -48,9 +49,11 @@ def analyze_solver(benchmark, names):
         elif name == "formulation_SLSQP":
             r = ["SLSQP-ABS-C", "SLSQP-SQUARE-C","SLSQP-LINEAR-C", "SLSQP-SQUARE", "SLSQP-ABS"]
             solvers = ["constrained_ABS_SLSQP", "constrained_SQUARE_SLSQP","constrained_LINEAR_SLSQP", "unconstrained_SQUARE_SLSQP", "unconstrained_ABS_SLSQP"]
+            solvers = ["constrained_ABS_SLSQP_0.0", "constrained_SQUARE_SLSQP_0.0","constrained_LINEAR_SLSQP", "unconstrained_SQUARE_SLSQP_0.8", "unconstrained_ABS_SLSQP_0.8"]
         elif name == "formulation_GD":
             r = ["GD-ABS-C", "GD-SQUARE-C","GD-LINEAR-C", "GD-SQUARE", "GD-ABS"]
-            solvers = ["constrained_ABS_GD", "constrained_SQUARE_GD","constrained_LINEAR_GD", "unconstrained_SQUARE_GD", "unconstrained_ABS_GD"]
+            #solvers = ["constrained_ABS_GD", "constrained_SQUARE_GD","constrained_LINEAR_GD", "unconstrained_SQUARE_GD", "unconstrained_ABS_GD"]
+            solvers = ["constrained_ABS_GD", "constrained_SQUARE_GD","constrained_LINEAR_GD", "unconstrained_SQUARE_GD_0.8", "unconstrained_ABS_GD_0.8"]
 
         for solver in solvers:
             results[solver] = []
@@ -66,35 +69,43 @@ def analyze_solver(benchmark, names):
                            break 
                except Exception as err: continue
         solvedInstances = []
-        for solver in solvers:
+        for solver in solvers: 
             print(solver, len(results[solver]))
             solvedInstances.append(len(results[solver]))
+            
+        r = [0,0.2,0.4,0.6,0.8,1.0]
+        solvedInstances = solvedInstances[:len(r)]        
         fig, ax = plt.subplots()
         x = np.arange(len(r))
-        ax.bar(x,solvedInstances)
+        ax.bar(x,[ solvedInstance * 1.0 / len(benchmarks) for solvedInstance in solvedInstances])
+        print([ solvedInstance * 1.0 / len(benchmarks) for solvedInstance in solvedInstances])
+        ax.set_xticks(x)
         ax.set_xticklabels(r,fontsize=10)
         plt.savefig("figs/" + name + '_' + problem + '.png')
         plt.cla()
+        ax.set_ylim((0,1))
+        ax.set_ylabel('raito of solved problems')
+        ax.set_xlabel('penalty coef.')
         print('saved one figure')
     #plt.legend(solvers)
 
 # histgram drawing for cnfxorcard 
 def drawHist():
-    r = [0,0.2,0.4,0.6,0.8]
-    res_abs = [92,43,38,32,29]
-    res_sq = [176,151,77,64,8] 
+    r = [0,0.2,0.4,0.6,0.8, 1.0]
+    res_sq_adam = [0.47, 0.89, 0.905, 0.93, 0.9666, 0.96]
+    res_sq_slsqp = [0.13, 0.68, 0.71, 0.752, 0.8, 0.76] 
     width = 0.35
     fig, ax = plt.subplots()
     x = np.arange(len(r))
-    rects1 = ax.bar(x - width/2, res_sq, width, label='SLSQP_SQ')
-    rects2 = ax.bar(x + width/2, res_abs, width, label='SLSQP_ABS')
+    rects1 = ax.bar(x - width/2, res_sq_adam, width, label='ADAM_SQ')
+    rects2 = ax.bar(x + width/2, res_sq_slsqp, width, label='SLSQP_SQ')
     ax.set_xticks(x)
     ax.set_xticklabels(r)
-    ax.set_ylabel('#solved problems')
-    ax.set_xlabel('penalty coef.')
-    #ax.set_title('Effect of penalty coefficient')
-    ax.legend()
-    plt.savefig("figs/" + 'cnfxorcard' + '.png')
+    ax.set_ylabel('ratio of solved problems', fontsize = 15)
+    ax.set_xlabel('barrier coefficient', fontsize = 15)
+    ax.set_xticklabels(r,fontsize=12)
+    ax.legend(fontsize = 13)
+    plt.savefig("figs/" + 'penaltyCard' + '.png')
     plt.cla()
 
 def analyze_thesis(benchmark = "CNF_1000", figDir = "figs/", name=""):
@@ -110,7 +121,7 @@ def analyze_thesis(benchmark = "CNF_1000", figDir = "figs/", name=""):
     elif name == "GD": 
         solvers = [ "constrained_LINEAR_GD", "constrained_SQUARE_GD", "constrained_ABS_GD", "unconstrained_SQUARE_GD"]
     elif name == "diffAlgo": 
-        solvers = ["constrained_ABS_SLSQP","constrained_LINEAR_GD","unconstrained_SQUARE_GD", "unconstrained_SQUARE_ADAM", "unconstrained_SQUARE_SLSQP", "constrained_SQUARE_SLSQP", "constrained_SQUARE_GD", "unconstrained_ABS_GD","unconstrained_ABS_SLSQP","constrained_ABS_GD"]
+        solvers = ["constrained_ABS_SLSQP","constrained_LINEAR_GD","unconstrained_SQUARE_GD", "unconstrained_SQUARE_ADAM", "unconstrained_SQUARE_SLSQP", "constrained_SQUARE_SLSQP", "constrained_SQUARE_GD", "unconstrained_ABS_GD","unconstrained_ABS_SLSQP","constrained_ABS_GD", "constrained_LINEAR_SLSQP"]
     elif name == "formulation_SLSQP":
         solvers = ["constrained_ABS_SLSQP", "constrained_SQUARE_SLSQP","constrained_LINEAR_SLSQP", "unconstrained_SQUARE_SLSQP", "unconstrained_ABS_SLSQP"]
     elif name == "formulation_GD":
@@ -187,8 +198,13 @@ def analyze_thesis(benchmark = "CNF_1000", figDir = "figs/", name=""):
                 if solver in results:
                     solverRank.append(sum(results[solver]))
             order = sorted(range(len(solverRank)), key=lambda k: solverRank[k])[::-1]
+            
             for idx in order:
-                ax.plot([k/10 for k in Range], results[solvers[idx]], linewidth=3)   
+                if "SQUARE" in solvers[idx]: color = 'b'
+                if "ABS" in solvers[idx]: color = 'orange'
+                if "LINEAR" in solvers[idx]: color = 'g'
+                lineshape = '--' if "unconstrained" in solvers[idx] else '-'
+                ax.plot([k/10 for k in Range], results[solvers[idx]], linewidth=3, color=color, linestyle=lineshape)   
             ax.set_ylabel('ratio of solved instances',fontsize=16)
             ax.set_xlabel('clause-vairable ratio',fontsize=16)
             ax.tick_params(axis='both', which='major', labelsize=12)
@@ -303,14 +319,17 @@ def analyze():
 problems = ["CNF_1000", "XOR_1000"] 
 #problems = ["cards"]
 #problems = ["cnfxorcard"] 
-names = ["diffAlgo","formulation_SLSQP", "formulation_GD"]
+#names = ["diffAlgo","formulation_SLSQP", "formulation_GD"]
+names = ["formulation_SLSQP", "formulation_GD"]
+names = ["formulation_GD"]
+names = ["diffAlgo"]
 #names = ["penaltyTermABS", "penaltyTermSQUARE", "penaltyTermABS-C", "penaltyTermSQUARE-C"]
 # figure 5
-#drawHist()
+drawHist()
 
 for problem in problems:
     for name in names:
         analyze_thesis(benchmark = problem, name = name)
-#analyze_thesis_maxsat("/benchmarks/MAXSAT_benchmarks/")
+        #analyze_thesis_maxsat("/benchmarks/MAXSAT_benchmarks/")
         #analyze_solver(benchmark = "benchmarks/cnfxorcard/new/", names = [name])
         #analyze_solver(benchmark = "benchmarks/cards/", names = [name])
