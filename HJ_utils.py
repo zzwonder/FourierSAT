@@ -1,9 +1,57 @@
 import numpy as np
 from args import *
+import time
 
-def compute_prox_parallel(x, polyStr, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0):
+def compute_prox_parallel(x0, polyStr, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0):
     import torch
-    pass
+
+    assert x0.ndim == 1
+
+    dim = len(x0)
+
+    x0 = torch.tensor(x0)
+    x0 = x0.view(1, dim)
+    linesearch_iters += 1
+    standard_dev = np.sqrt(delta * t / alpha)
+
+    # Sample y from a normal distribution centered at x with variance proportional to standard_dev
+    x = standard_dev * torch.randn(int_samples, dim) + x0 # y has shape (n_samples x dim)
+    assert x.shape == (int_samples, dim)
+
+    # evaluate polynomial string at variable x
+    start_time = time.time()
+    fx = eval(polyStr)
+    end_time = time.time()
+
+    feval_time = end_time - start_time
+
+    z = -fx*(alpha/delta) # shape =  n_samples
+    w = torch.softmax(z, dim=0) 
+
+    assert z.shape == (int_samples, )
+
+    softmax_overflow_check = (w < np.inf)
+    if softmax_overflow_check.prod()==0.0:
+        print('x0 = ', x0)
+        print('z = ', z)
+        print('w = ', w)
+        alpha = 0.5*alpha
+        return compute_prox_parallel(x0, polyStr, t=t, delta=delta, int_samples=int_samples, alpha=alpha, linesearch_iters=linesearch_iters, device=device)
+    else:
+        prox_term = torch.matmul(w.t(), x)
+        prox_term = prox_term.view(-1,1)
+
+        prox_overflow = (prox_term < np.inf)
+        if prox_overflow.prod() == 0.0:
+            print('prox overflowed: ', prox_term)
+        assert(prox_overflow.prod() == 1.0)
+        
+        envelope = 0.0
+
+        prox_term = prox_term.view(dim)
+        prox_term = prox_term.numpy()
+
+        return prox_term, envelope, linesearch_iters
 
 def compute_prox(x, args, f, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0):
     '''
