@@ -2,20 +2,23 @@ import numpy as np
 from args import *
 import time
 
-def compute_prox_parallel(x0, polyStr, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0):
+def compute_prox_parallel(x0, polyStr, t=1e-1, delta=1e-1, int_samples=int(1e4), alpha=1.0, linesearch_iters=0):
     import torch
 
     assert x0.ndim == 1
+
+    device = 'cuda:0'
 
     dim = len(x0)
 
     x0 = torch.tensor(x0)
     x0 = x0.view(1, dim)
+    x0 = x0.to(device)
     linesearch_iters += 1
     standard_dev = np.sqrt(delta * t / alpha)
 
     # Sample y from a normal distribution centered at x with variance proportional to standard_dev
-    x = standard_dev * torch.randn(int_samples, dim) + x0 # y has shape (n_samples x dim)
+    x = standard_dev * torch.randn(int_samples, dim, device=device) + x0 # y has shape (n_samples x dim)
     assert x.shape == (int_samples, dim)
 
     # evaluate polynomial string at variable x
@@ -24,6 +27,8 @@ def compute_prox_parallel(x0, polyStr, t=1e-1, delta=1e-2, int_samples=int(1e4),
     end_time = time.time()
 
     feval_time = end_time - start_time
+
+    # print('feval_time = ', feval_time)
 
     z = -fx*(alpha/delta) # shape =  n_samples
     w = torch.softmax(z, dim=0) 
@@ -45,11 +50,24 @@ def compute_prox_parallel(x0, polyStr, t=1e-1, delta=1e-2, int_samples=int(1e4),
         if prox_overflow.prod() == 0.0:
             print('prox overflowed: ', prox_term)
         assert(prox_overflow.prod() == 1.0)
+
+        # find where fx is smallest and f(prox_term)
+        min_index = torch.argmin(fx)
+        f_best = fx[min_index]
+        x_best = x[min_index, :].clone()
+        assert x_best.shape == (dim, )
+
+        x = prox_term.view(1,-1).clone()
+        f_prox = eval(polyStr)
+        # print('f_prox = ', f_prox, ', f_best = ', f_best)
+
+        if f_best < f_prox:
+            prox_term = x_best.view(dim,1)
         
         envelope = 0.0
 
         prox_term = prox_term.view(dim)
-        prox_term = prox_term.numpy()
+        prox_term = prox_term.cpu().numpy()
 
         return prox_term, envelope, linesearch_iters
 
