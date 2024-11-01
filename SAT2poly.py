@@ -10,19 +10,32 @@ def SAT2PolyStr(args, nv, objectiveType = "square", beta = 0):
     for i in range(len(clauses)):
         constraint = clauses[i]
         polyTerm = []
-        k = len(constraint)
-        for lstr in constraint:
-            # check whether the literal is positive or negative
-            l = int(lstr)
-            if l > 0:
-                polyTerm.append( "(1-x[:,%d])" % (l - 1))
-            else:
-                polyTerm.append( "x[:,%d]" % ( abs(l) - 1))
-        tempStr = (" * ".join(polyTerm[i] for i in range(len(polyTerm))))
+        assert ctype[i] == 'c' or ctype[i] == 'x'
+        if ctype[i] == 'c':
+            k = len(constraint)
+            assert klist[i] == 1 # only cnf and xor constraints are supported
+            for lstr in constraint:
+                # check whether the literal is positive or negative
+                l = int(lstr)
+                if l > 0:
+                    polyTerm.append( "(0.5 + 0.5 * x[:,%d])" % (l - 1))
+                else:
+                    polyTerm.append( "(0.5 - 0.5 * x[:,%d])" % ( abs(l) - 1))
+            tempStr = (" * ".join(polyTerm[i] for i in range(len(polyTerm))))
+        elif ctype[i] == 'x':
+            k = len(constraint)
+            for lstr in constraint:
+                l = int(lstr)
+                if l > 0:
+                    polyTerm.append( "(-x[:,%d])" % (l - 1))
+                else:
+                    polyTerm.append( "x[:,%d]" % ( abs(l) - 1))
+            tempStr = (" * ".join(polyTerm[i] for i in range(len(polyTerm))))
+            tempStr = '0.5 * (' + tempStr + ' + 1)'
         if objectiveType == "abs":
-            terms.append("torch.abs(%s)" % tempStr)
+            terms.append(repr(weight[i]) + " * torch.abs(%s)" % tempStr)
         elif objectiveType == "square":
-            terms.append("torch.square(%s)" % tempStr)
+            terms.append(repr(weight[i]) + " * torch.square(%s)" % tempStr)
         #if form == "bounded":   # the bounded formulation needs to be optimized on the [0,1]^n cube
         #    terms.append(tempStr)
         else:
@@ -32,7 +45,3 @@ def SAT2PolyStr(args, nv, objectiveType = "square", beta = 0):
         for i in range(nv):
             resStr += (" + %f torch.square(x[:,%d] - x[:,%d] * x[:,%d]) " % (beta, i, i, i))    
     return resStr
-
-def polyCNFFile(cnffile, form):
-    return cnf2poly(form, cnffile, inputFile=True)
-
