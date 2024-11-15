@@ -41,7 +41,9 @@ def SAT2PolyStr(args, nv, objectiveType = "square", beta = 0):
         else:
             raise ValueError("unrecognized objectiveType: " + objectiveType)
     resStr =  (" + ".join(terms[i] for i in range(len(terms))))
-    if beta > 0:
-        for i in range(nv):
-            resStr += (" + %f torch.square(x[:,%d] - x[:,%d] * x[:,%d]) " % (beta, i, i, i))    
+    for i in range(nv):
+        if beta > 0:
+            resStr += (" + %f * torch.square(x[:,%d] - x[:,%d] * x[:,%d]) " % (beta, i, i, i))    
+        if beta < 0:
+            resStr += (" %f * torch.square(x[:,%d] - x[:,%d] * x[:,%d]) " % (beta, i, i, i))    
     return resStr

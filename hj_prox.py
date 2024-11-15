@@ -21,7 +21,7 @@ def hj_prox(x0, args):
     while iterNum < maxIter:
         if ARGS.optimizer == "HJPROX_PARALLEL":
             polystr = SAT2PolyStr(args, len(x0), objectiveType = ARGS.objectiveType, beta = ARGS.beta)
-            #print(polystr)
+            print(polystr)
             x, *_ = compute_prox_parallel(x, polystr, t=1e-1, delta=1e-1, int_samples=int(1e5), alpha=1.0, linesearch_iters=0)
         elif ARGS.optimizer == "HJPROX":
             x, *_ = compute_prox(x, args, fun, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0)
