@@ -22,11 +22,11 @@ def hj_prox(x0, args):
     iterNum = 0
     # if ARGS.ismaxsat == 1: eps = 5e-5 * len(x0)
 
-    t = 1e-1
+    t = 1.0
     delta = 1e-1
     int_samples = int(1e4)
 
-    print('t = ', t, 'delta = ', delta, 'int_samples = ', int_samples)
+    # print('t = ', t, 'delta = ', delta, 'int_samples = ', int_samples)
 
     dist_fval_best = 1e10
     cont_fval_best = 1e10
@@ -46,8 +46,11 @@ def hj_prox(x0, args):
         # elif ARGS.optimizer == "HJPROX":
             # x, *_ = compute_prox(x, args, fun, t=t, delta=delta, int_samples=int_samples, alpha=1.0, linesearch_iters=0)
 
+        distFval = distFval.numpy().detach().cpu().item()
+        contFval = contFval.numpy().detach().cpu().item()
+        
         if distFval < dist_fval_best:
-            x_best = (x.clone().view(-1).detach().cpu().numpy())
+            x_best = (torch.sign(x).clone().view(-1).detach().cpu().numpy())
         dist_fval_best = min(dist_fval_best, distFval)
         cont_fval_best = min(cont_fval_best, contFval)
         if dist_fval_best < 1: break
