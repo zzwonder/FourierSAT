@@ -1,17 +1,22 @@
 import numpy as np
 from args import *
 import time
+import sys
+sys.setrecursionlimit(10000)  # Example: set to a higher number as needed
 
 def compute_prox_parallel(x0, polyStr, t=1e-1, delta=1e-1, int_samples=int(1e4), alpha=1.0, linesearch_iters=0):
     import torch
 
-    assert x0.ndim == 1
+    # assumes x0 is a torch tensor of size (1, dim)
+
+    # assert x0.ndim == 1
 
     device = 'cuda:0'
 
-    dim = len(x0)
+    # dim = len(x0)
+    dim = x0.shape[1]
 
-    x0 = torch.tensor(x0)
+    # x0 = torch.tensor(x0)
     x0 = x0.view(1, dim)
     x0 = x0.to(device)
     linesearch_iters += 1
@@ -28,48 +33,48 @@ def compute_prox_parallel(x0, polyStr, t=1e-1, delta=1e-1, int_samples=int(1e4),
 
     feval_time = end_time - start_time
 
-    # print('feval_time = ', feval_time)
-
     z = -fx*(alpha/delta) # shape =  n_samples
     w = torch.softmax(z, dim=0) 
 
     assert z.shape == (int_samples, )
 
     softmax_overflow_check = (w < np.inf)
-    if softmax_overflow_check.prod()==0.0:
-        print('x0 = ', x0)
-        print('z = ', z)
-        print('w = ', w)
-        alpha = 0.5*alpha
-        return compute_prox_parallel(x0, polyStr, t=t, delta=delta, int_samples=int_samples, alpha=alpha, linesearch_iters=linesearch_iters, device=device)
-    else:
-        prox_term = torch.matmul(w.t(), x)
-        prox_term = prox_term.view(-1,1)
+    # if softmax_overflow_check.prod()==0.0:
+    #     print('x0 = ', x0)
+    #     print('z = ', z)
+    #     print('w = ', w)
+    #     alpha = 0.5*alpha
+    #     return compute_prox_parallel(x0, polyStr, t=t, delta=delta, int_samples=int_samples, alpha=alpha, linesearch_iters=linesearch_iters, device=device)
+    # else:
+    prox_term = torch.matmul(w.t(), x)
+    prox_term = prox_term.view(-1,1)
 
-        prox_overflow = (prox_term < np.inf)
-        if prox_overflow.prod() == 0.0:
-            print('prox overflowed: ', prox_term)
-        assert(prox_overflow.prod() == 1.0)
+    # prox_overflow = (prox_term < np.inf)
+    # if prox_overflow.prod() == 0.0:
+    #     print('prox overflowed: ', prox_term)
+    # assert(prox_overflow.prod() == 1.0)
 
-        # find where fx is smallest and f(prox_term)
-        min_index = torch.argmin(fx)
-        f_best = fx[min_index]
-        x_best = x[min_index, :].clone()
-        assert x_best.shape == (dim, )
+    # find where fx is smallest and f(prox_term)
+    min_index = torch.argmin(fx)
+    f_best = fx[min_index]
+    x_best_sample = x[min_index, :].clone()
+    assert x_best_sample.shape == (dim, )
 
-        x = prox_term.view(1,-1).clone()
-        f_prox = eval(polyStr)
-        # print('f_prox = ', f_prox, ', f_best = ', f_best)
+    x = prox_term.view(1,-1).clone()
+    f_prox = eval(polyStr)
+    # print('f_prox = ', f_prox, ', f_best = ', f_best)
 
-        if f_best < f_prox:
-            prox_term = x_best.view(dim,1)
-        
-        envelope = 0.0
+    if f_best < f_prox:
+        prox_term = x_best_sample
+    
+    envelope = 0.0
 
-        prox_term = prox_term.view(dim)
-        prox_term = prox_term.cpu().numpy()
+    # prox_term = prox_term.view(dim)
+    # prox_term = prox_term.cpu().numpy()
 
-        return prox_term, envelope, linesearch_iters
+    prox_term = prox_term.view(1, dim)
+
+    return prox_term, envelope, linesearch_iters
 
 def compute_prox(x, args, f, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0):
     '''
@@ -109,7 +114,7 @@ def compute_prox(x, args, f, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0
         # find index where z is minimum and obtain minimum between f(y_min) and f(prox_term)
         min_index = np.argmin(f_array)
         f_prox = f(prox_term[0], args)
-        if z[min_index] < f_prox:
+        if f_array[min_index] < f_prox:
             prox_term = y[min_index,:]
 
 

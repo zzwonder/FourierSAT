@@ -26,7 +26,7 @@ def SAT2PolyStr(args, nv, objectiveType = "square", beta = 0):
             k = len(constraint)
             for lstr in constraint:
                 l = int(lstr)
-                if l > 0:
+                if l < 0:
                     polyTerm.append( "(-x[:,%d])" % (l - 1))
                 else:
                     polyTerm.append( "x[:,%d]" % ( abs(l) - 1))
