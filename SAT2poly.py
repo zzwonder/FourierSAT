@@ -21,16 +21,16 @@ def SAT2PolyStr(args, nv, objectiveType = "square", beta = 0):
                     polyTerm.append( "(0.5 + 0.5 * x[:,%d])" % (l - 1))
                 else:
                     polyTerm.append( "(0.5 - 0.5 * x[:,%d])" % ( abs(l) - 1))
-            tempStr = (" * ".join(polyTerm[i] for i in range(len(polyTerm))))
+            tempStr = (" * ".join(poly for poly in polyTerm))
         elif ctype[i] == 'x':
             k = len(constraint)
             for lstr in constraint:
                 l = int(lstr)
                 if l < 0:
-                    polyTerm.append( "(-x[:,%d])" % (l - 1))
+                    polyTerm.append( "(-x[:,%d])" % ( abs(l) - 1))
                 else:
-                    polyTerm.append( "x[:,%d]" % ( abs(l) - 1))
-            tempStr = (" * ".join(polyTerm[i] for i in range(len(polyTerm))))
+                    polyTerm.append( "x[:,%d]" % ( l - 1))
+            tempStr = (" * ".join(poly for poly in polyTerm))
             tempStr = '0.5 * (' + tempStr + ' + 1)'
         if objectiveType == "abs":
             terms.append(repr(weight[i]) + " * torch.abs(%s)" % tempStr)
@@ -40,7 +40,7 @@ def SAT2PolyStr(args, nv, objectiveType = "square", beta = 0):
         #    terms.append(tempStr)
         else:
             raise ValueError("unrecognized objectiveType: " + objectiveType)
-    resStr =  (" + ".join(terms[i] for i in range(len(terms))))
+    resStr =  (" + ".join(term for term in terms))
     for i in range(nv):
         if beta > 0:
             resStr += (" + %f * torch.square(x[:,%d] - x[:,%d] * x[:,%d]) " % (beta, i, i, i))    
