@@ -8,10 +8,10 @@
 #SBATCH --partition=commons
 #SBATCH --profile=ALL
 #SBATCH --error=error_messages/%j.out
-module load Anaconda3/5.0.0
-module load GCC/8.3.0
-module load OpenMPI/3.1.4
-module load SciPy-bundle/2019a
+# module load Anaconda3/5.0.0
+# module load GCC/8.3.0
+# module load OpenMPI/3.1.4
+# module load SciPy-bundle/2019a
 
 function run(){
 TL=6000

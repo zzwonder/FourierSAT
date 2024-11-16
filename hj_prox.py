@@ -6,39 +6,51 @@ from args import *
 from SAT2poly import SAT2PolyStr
 import torch
 
+# set default type to double precision
+torch.set_default_dtype(torch.float64)
+
 def hj_prox(x0, args):
     fval_best = 1e10
-    maxIter = int(1e4)
-    x = x0
+    maxIter = int(1e5)
+
+    dim = len(x0) # assumes x0 is a numpy array
+    x = torch.tensor(x0).view(1,dim)
+    x_cont = x.clone()
     eps = 1e-4
     distFval = 1e10
     contFval = 1e10
     iterNum = 0
     # if ARGS.ismaxsat == 1: eps = 5e-5 * len(x0)
 
+    t = 1e-1
+    delta = 1e-1
+    int_samples = int(1e4)
+
+    print('t = ', t, 'delta = ', delta, 'int_samples = ', int_samples)
+
     dist_fval_best = 1e10
     cont_fval_best = 1e10
     while iterNum < maxIter:
         if ARGS.optimizer == "HJPROX_PARALLEL":
             polystr = SAT2PolyStr(args, len(x0), objectiveType = ARGS.objectiveType, beta = ARGS.beta)
-            print(polystr)
-            x, *_ = compute_prox_parallel(x, polystr, t=1e-1, delta=1e-1, int_samples=int(1e5), alpha=1.0, linesearch_iters=0)
-        elif ARGS.optimizer == "HJPROX":
-            x, *_ = compute_prox(x, args, fun, t=1e-1, delta=1e-2, int_samples=int(1e4), alpha=1.0, linesearch_iters=0)
-        if not ARGS.unconstrained:
-            x = truncate(x)
-        contFval = fun(x, args)
-        x = torch.tensor(x).view(1,-1)
-        contFval2 = eval(polystr)
-        x = x.view(-1, ).numpy()
-        # print('iter ' + repr(iterNum), 'contFval = ', contFval, ', contFval using PolyStr = ', contFval2)
-        distFval = fun(rounding(x), args)
+
+            x = x_cont.clone()
+            
+            x, *_ = compute_prox_parallel(x, polystr, t=t, delta=delta, int_samples=int_samples, alpha=1.0, linesearch_iters=0)
+            contFval = eval(polystr).detach().item()
+
+            x_cont = x.clone()
+            x = torch.round(torch.clamp(x, min=-1, max=1))
+            distFval = eval(polystr).detach().item()
+
+        # elif ARGS.optimizer == "HJPROX":
+            # x, *_ = compute_prox(x, args, fun, t=t, delta=delta, int_samples=int_samples, alpha=1.0, linesearch_iters=0)
+
         if distFval < dist_fval_best:
             x_best = x
         dist_fval_best = min(dist_fval_best, distFval)
         cont_fval_best = min(cont_fval_best, contFval)
-        if distFval < 1: break
+        if dist_fval_best < 1: print('CONVERGED'); break
         iterNum += 1
-        # print("iter " + repr(iterNum) + " distFval " + repr(distFval) + " contFval " + repr(contFval)) # + " time " + repr(time.time()))
-        print('iter ' + repr(iterNum), 'contFval = ', contFval, ', contFval using PolyStr = ', contFval2)
+        print("iter " + repr(iterNum) + " distFval " + repr(dist_fval_best) + " contFval " + repr(cont_fval_best)) # + " time " + repr(time.time()))
     return dist_fval_best, cont_fval_best, x_best, iterNum
