@@ -37,20 +37,20 @@ def hj_prox(x0, args):
             x = x_cont.clone()
             
             x, *_ = compute_prox_parallel(x, polystr, t=t, delta=delta, int_samples=int_samples, alpha=1.0, linesearch_iters=0)
-            contFval = eval(polystr).detach().item()
+            contFval = eval(polystr).detach().cpu().item()
 
             x_cont = x.clone()
-            x = torch.round(torch.clamp(x, min=-1, max=1))
-            distFval = eval(polystr).detach().item()
+            x = torch.sign(x)
+            distFval = eval(polystr).detach().cpu().item()
 
         # elif ARGS.optimizer == "HJPROX":
             # x, *_ = compute_prox(x, args, fun, t=t, delta=delta, int_samples=int_samples, alpha=1.0, linesearch_iters=0)
 
         if distFval < dist_fval_best:
-            x_best = x
+            x_best = (x.clone().view(-1).detach().cpu().numpy())
         dist_fval_best = min(dist_fval_best, distFval)
         cont_fval_best = min(cont_fval_best, contFval)
-        if dist_fval_best < 1: print('CONVERGED'); break
+        if dist_fval_best < 1: break
         iterNum += 1
         print("iter " + repr(iterNum) + " distFval " + repr(dist_fval_best) + " contFval " + repr(cont_fval_best)) # + " time " + repr(time.time()))
     return dist_fval_best, cont_fval_best, x_best, iterNum
